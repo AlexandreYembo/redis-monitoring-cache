@@ -4,4 +4,5 @@ This project has the role to control the redis cache expiration and renew automa
 ## Technologies:
 #### NodeJs
 #### Redis
-#### RabbitMQ
+#### RabbitMQ (Current development)
+#### Service Bus (Future development)
