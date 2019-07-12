@@ -9,8 +9,8 @@ class baseClientReceiver{
         return this.client === client;
     }
 
-    receiveQueue(_callBack){
-        _callBack;
+    receiveQueueAsync(_callBack){
+         _callBack;
     }
 }
 

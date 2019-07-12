@@ -10,9 +10,10 @@ const testFun = () => {
     
 }
 
-const receiveFromQueueAsync = () => {
+const receiveFromQueueAsync = async () => {
+    console.log(new Date().getSeconds())
     console.log('cached expired');
-    client && client.receiveFromQueue && client.receiveQueue(testFun);
+    client && client.receiveFromQueue && await client.receiveQueueAsync(testFun);
 }
 
 receiveFromQueueAsync();
