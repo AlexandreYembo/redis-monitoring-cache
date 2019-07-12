@@ -1,4 +1,4 @@
-var {CONST_BUS_CLIENT} = require('constants')
+var {CONST_BUS_CLIENT} = require('./constants')
 
 module.exports = {
     REDIS_SERVER: process.env.REDIS_SERVER || '',

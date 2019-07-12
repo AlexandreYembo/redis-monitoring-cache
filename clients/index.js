@@ -3,4 +3,4 @@ module.exports = {
     //rabbitMQSender //TODO
     // serviceBusReceiver //TODO
     //serviceBusSender //TODO
-}
+};

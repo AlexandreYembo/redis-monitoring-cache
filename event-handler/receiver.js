@@ -1,14 +1,18 @@
-const bluebird = require('bluebird'),
-    config = require('../config'),
-    clientBase = require('./matchClient')
+const bluebird = require('bluebird');
+const config = require('../config');
+const clientBase = require('./matchClient');
 
-global.Promise = bluebird
+global.Promise = bluebird;
 
-let client = clientBase.getClient(config.BUS_CLIENT)
+let client = clientBase.getClient(config.BUS_CLIENT);
 
-const receiveFromQueue = () => {
-    console.log('cached expired')
-    client && client.receiveFromQueue ? client.receiveQueue() :  notificationResult(false, `not recognized the redis key:  ${redisKey}`)
+const testFun = () => {
+    
 }
 
-receiveFromQueue()
+const receiveFromQueueAsync = () => {
+    console.log('cached expired');
+    client && client.receiveFromQueue && client.receiveQueue(testFun);
+}
+
+receiveFromQueueAsync();

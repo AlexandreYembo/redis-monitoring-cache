@@ -1,12 +1,12 @@
 class baseClientReceiver{
     constructor(client){
-        this.client = client
-        this.receiveFromQueue = false
-        this.redisObject = null
+        this.client = client;
+        this.receiveFromQueue = false;
+        this.redisObject = null;
     }
 
     getClient(client){
-        return this.client === client
+        return this.client === client;
     }
 
     receiveQueue(_callBack){
@@ -14,4 +14,4 @@ class baseClientReceiver{
     }
 }
 
-module.exports = baseClientReceiver
+module.exports = baseClientReceiver;
