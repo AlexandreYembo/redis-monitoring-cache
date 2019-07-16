@@ -1,10 +1,8 @@
 const base = require('./rabbitmq-base'),
-    baseClientReceiver = require('../base-client-receiver');
+    baseClient = require('../base-client');
 var {CONST_BUS_CLIENT} = require('../../constants');
 
-var cont = 0;
-
-class rabbitMQReceiver extends baseClientReceiver{
+class rabbitMQClient extends baseClient{
     constructor(){
         super(CONST_BUS_CLIENT.RABBIT_MQ);
         super.receiveFromQueue = true;
@@ -20,18 +18,28 @@ class rabbitMQReceiver extends baseClientReceiver{
             base.createChannel(err, conn, ((err, ch) =>
                 receive(err, ch, _callBack))));
     }
+
+    async sendToQueue(obj){
+        await base.connect((err, conn) => 
+                base.createChannel(err, conn, 
+                    (err, ch) => send(err, ch, obj)));
+    }
+    
 }
 
 const receive = async (err, ch, _callBack) => {
     let q = base.BUS_CHANNEL;
     ch.assertQueue(q, {durable:false});
     await ch.consume(q, (msg) =>{
-        cont++
-        console.log(new Date().getSeconds())
-        console.log("cont" + cont);
-        console.log(" [x] Received %s", msg.content.toString());
         _callBack(JSON.parse(msg.content));
     }, {noAck: true})
 }
 
-module.exports = rabbitMQReceiver;
+const send = (err, ch, obj) => {
+    let q = base.BUS_CHANNEL;
+    ch.assertQueue(q, {durable: false});
+    ch.sendToQueue(q, new Buffer(JSON.stringify(obj.body)));
+    console.log(`Object ${obj.body} sent`);
+}
+
+module.exports = rabbitMQClient;

@@ -1,6 +1,6 @@
 module.exports = {
-    rabbitMQReceiver: require('./rabbitMQ/rabbitmq-receiver')
-    //rabbitMQSender //TODO
-    // serviceBusReceiver //TODO
-    //serviceBusSender //TODO
+    rabbitMQClient: require('./rabbitMQ/rabbitmq-client'),
+    // serviceBusClient //TODO
+
+    redisClient: require('./redis-client')
 };

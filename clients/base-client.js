@@ -1,17 +1,20 @@
-class baseClientReceiver{
+class baseClient{
     constructor(client){
         this.client = client;
         this.receiveFromQueue = false;
-        this.redisObject = null;
     }
 
     getClient(client){
         return this.client === client;
     }
 
-    receiveQueueAsync(_callBack){
-         _callBack;
+    receiveQueueAsync(callBack){
+        callBack;
+    }
+
+    sendToQueue(callBack){
+        callBack;
     }
 }
 
-module.exports = baseClientReceiver;
+module.exports = baseClient;

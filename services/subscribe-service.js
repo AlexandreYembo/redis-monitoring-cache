@@ -11,8 +11,7 @@ if (cluster.isMaster){
   eventExit();
 }
 else if(cluster.isWorker){
-  //require('./event-handler/sender') TODO
-  require('./event-handler/receiver');
+  require('../event-handler/subscriber')
 
   //Event when has an exception, process is finished and new one is created.
  process.on('uncaughtException', ex => process.exit(1));
